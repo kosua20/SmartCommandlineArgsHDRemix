@@ -36,6 +36,7 @@ namespace SmartCmdArgs.DataSerialization
                     Id = kvPair.Value.Id,
                     ExclusiveMode = kvPair.Value.ExclusiveMode,
                     Delimiter = kvPair.Value.Delimiter,
+                    HiddenInList = kvPair.Value.HiddenInList,
                     Items = TransformCmdList(kvPair.Value.Items),
 
                     // not in JSON

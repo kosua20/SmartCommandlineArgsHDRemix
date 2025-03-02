@@ -45,6 +45,7 @@
                           SetProjectConfigCommand="{Binding SetProjectConfigCommand}"
                           SetProjectPlatformCommand="{Binding SetProjectPlatformCommand}"
                           SetLaunchProfileCommand="{Binding SetLaunchProfileCommand}"
+                          ToggleProjectHiddenCommand="{Binding ToggleProjectHiddenCommand}"
                           ToggleExclusiveModeCommand="{Binding ToggleExclusiveModeCommand}"
                           SetDelimiterCommand="{Binding SetDelimiterCommand}"
                           SetArgumentTypeCommand="{Binding SetArgumentTypeCommand}"

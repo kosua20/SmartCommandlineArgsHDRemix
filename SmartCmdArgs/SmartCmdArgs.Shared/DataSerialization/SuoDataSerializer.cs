@@ -97,6 +97,7 @@ namespace SmartCmdArgs.DataSerialization
             data.Settings = new SettingsJson(settingsViewModel);
 
             data.ShowAllProjects = treeViewModel.ShowAllProjects;
+            data.FilterHiddenProjects = treeViewModel.FilterHiddenProjects;
             data.CheckedArguments = new HashSet<Guid>(treeViewModel.AllProjects.SelectMany(p => p.CheckedParameters).Select(arg => arg.Id));
             data.ExpandedContainer = new HashSet<Guid>(treeViewModel.AllItems.OfType<CmdContainer>().Where(con => con.IsExpanded).Select(p => p.Id));
 
@@ -112,6 +113,7 @@ namespace SmartCmdArgs.DataSerialization
                     Delimiter = kvPair.Value.Delimiter,
                     Postfix = kvPair.Value.Postfix,
                     Prefix = kvPair.Value.Prefix,
+                    HiddenInList = kvPair.Value.HiddenInList,
                     Items = TransformCmdList(kvPair.Value.Items),
 
                     // not in JSON

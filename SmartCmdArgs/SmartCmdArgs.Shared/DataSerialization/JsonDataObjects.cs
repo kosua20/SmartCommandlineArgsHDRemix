@@ -41,10 +41,12 @@ namespace SmartCmdArgs.DataSerialization
 
     public class SuoDataJson
     {
-        public int FileVersion = 2;
+        public int FileVersion = 3;
 
         public bool? IsEnabled;
         public bool ShowAllProjects;
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public bool FilterHiddenProjects = true;
         public HashSet<Guid> SelectedItems = new HashSet<Guid>();
         public HashSet<Guid> CheckedArguments = new HashSet<Guid>();
         public HashSet<Guid> ExpandedContainer = new HashSet<Guid>();
@@ -64,6 +66,9 @@ namespace SmartCmdArgs.DataSerialization
 
     public class ProjectDataJson : CmdItemJson
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public bool HiddenInList = false;
+
         public ProjectDataJson()
         {
             Items = new List<CmdItemJson>();
@@ -72,7 +77,7 @@ namespace SmartCmdArgs.DataSerialization
 
     public class ProjectDataJsonVersioned : ProjectDataJson
     {
-        public int FileVersion = 2;
+        public int FileVersion = 3;
     }
 
     public class CmdItemJson

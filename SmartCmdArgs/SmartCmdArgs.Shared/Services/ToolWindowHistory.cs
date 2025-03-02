@@ -90,6 +90,7 @@ namespace SmartCmdArgs.Services
             if (_buffer.TryGetCurrent(out SuoDataJson data))
             {
                 treeViewModel.ShowAllProjects = data.ShowAllProjects;
+                treeViewModel.FilterHiddenProjects = data.FilterHiddenProjects;
 
                 foreach (var pair in data.ProjectArguments)
                 {

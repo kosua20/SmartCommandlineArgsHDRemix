@@ -143,6 +143,13 @@ namespace SmartCmdArgs.ViewModel
         {
         }
     }
+    public class IsHiddenChangedEvent : GenericChangedEventArgs<bool>
+    {
+        public IsHiddenChangedEvent(CmdBase sender, bool oldValue, bool newValue)
+            : base(sender, oldValue, newValue)
+        {
+        }
+    }
 
     public class ParamTypeChangedEvent : GenericChangedEventArgs<CmdParamType>
     {

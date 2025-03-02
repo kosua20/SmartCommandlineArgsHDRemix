@@ -24,6 +24,7 @@ namespace SmartCmdArgs.DataSerialization
                 Delimiter = prj.Delimiter,
                 Postfix = prj.Postfix,
                 Prefix = prj.Prefix,
+                HiddenInList = prj.HiddenInList,
                 Items = TransformCmdList(prj.Items)
             };
 

@@ -40,6 +40,22 @@ namespace SmartCmdArgs.ViewModel
                 ParentTreeViewModel?.OnItemSelectionChanged(this);
             }
         }
+        private bool isHiddenInList = false;
+        public bool HiddenInList 
+        {
+            get => isHiddenInList;
+            set
+            {
+                bool oldValue = isHiddenInList;
+                SetAndNotify(value, ref isHiddenInList);
+                if (oldValue != value)
+                {
+                    ParentTreeViewModel?.UpdateTree();
+                    BubbleEvent(new IsHiddenChangedEvent(this, oldValue, value), null);
+                }
+            }
+            
+        }
 
         protected override Predicate<CmdBase> FilterPredicate => Filter;
         private Predicate<CmdBase> filter;
@@ -52,10 +68,11 @@ namespace SmartCmdArgs.ViewModel
 
         public Guid Kind { get; set; }
 
-        public CmdProject(Guid id, Guid kind, string displayName, IEnumerable<CmdBase> items, bool isExpanded, bool exclusiveMode, string delimiter, string prefix, string postfix)
+        public CmdProject(Guid id, Guid kind, string displayName, IEnumerable<CmdBase> items, bool isExpanded, bool exclusiveMode, string delimiter, string prefix, string postfix, bool hiddenInList)
             : base(id, displayName, items, isExpanded, exclusiveMode, delimiter, prefix, postfix)
         {
             Kind = kind;
+            HiddenInList = hiddenInList;
         }
 
         public override CmdBase Copy()

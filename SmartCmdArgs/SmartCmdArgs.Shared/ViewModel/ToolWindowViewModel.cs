@@ -59,6 +59,8 @@ namespace SmartCmdArgs.ViewModel
 
         public RelayCommand ShowAllProjectsCommand { get; }
 
+        public RelayCommand ShowHiddenProjectsCommand { get; }
+
         public RelayCommand ShowSettingsCommand { get; }
 
         public RelayCommand OpenOptionsCommand { get; }
@@ -94,6 +96,8 @@ namespace SmartCmdArgs.ViewModel
         public RelayCommand<string> SetProjectPlatformCommand { get; }
 
         public RelayCommand<string> SetLaunchProfileCommand { get; }
+
+        public RelayCommand ToggleProjectHiddenCommand { get; }
 
         public RelayCommand ToggleExclusiveModeCommand { get; }
 
@@ -204,6 +208,12 @@ namespace SmartCmdArgs.ViewModel
                 () => {
                     toolWindowHistory.SaveState();
                     treeViewModel.ShowAllProjects = !treeViewModel.ShowAllProjects;
+                }, canExecute: _ => ExtensionEnabled && settingsService.Loaded);
+
+            ShowHiddenProjectsCommand = new RelayCommand(
+                () => {
+                    toolWindowHistory.SaveState();
+                    treeViewModel.FilterHiddenProjects = !treeViewModel.FilterHiddenProjects;
                 }, canExecute: _ => ExtensionEnabled && settingsService.Loaded);
 
             ShowSettingsCommand = new RelayCommand(
@@ -352,6 +362,17 @@ namespace SmartCmdArgs.ViewModel
                 }
             }, _ => ExtensionEnabled && HasSingleSelectedItemOfType<CmdGroup>());
 
+            ToggleProjectHiddenCommand = new RelayCommand(() => {
+                toolWindowHistory.SaveState();
+                foreach (var selectedItem in treeViewModel.SelectedItems)
+                {
+                    if (selectedItem is CmdProject proj)
+                    {
+                        proj.HiddenInList = !proj.HiddenInList;
+                    }
+                }
+            }, _ => ExtensionEnabled && HasSelectedItemOfType<CmdProject>());
+
             ToggleExclusiveModeCommand = new RelayCommand(() =>
             {
                 var selectedItem = treeViewModel.SelectedItems.FirstOrDefault();
@@ -412,6 +433,7 @@ namespace SmartCmdArgs.ViewModel
         public void Reset()
         {
             treeViewModel.ShowAllProjects = false;
+            treeViewModel.FilterHiddenProjects = true;
             treeViewModel.Projects.Clear();
             toolWindowHistory.Clear();
         }
@@ -617,7 +639,8 @@ namespace SmartCmdArgs.ViewModel
                 data.ExclusiveMode,
                 data.Delimiter,
                 data.Prefix,
-                data.Postfix);
+                data.Postfix,
+                data.HiddenInList);
 
             // Assign treeViewModel after AddRange to not get a lot of ParentChanged events
             cmdPrj.ParentTreeViewModel = treeViewModel; 

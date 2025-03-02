@@ -52,6 +52,9 @@ namespace SmartCmdArgs
 
                 AddToggleCommandToService(commandService, PackageGuids.guidCmdArgsToolBarCmdSet, PackageIds.ToolbarShowAllProjectsCommandId,
                     toolWindowViewModel.ShowAllProjectsCommand, () => treeViewModel.ShowAllProjects);
+
+                AddToggleCommandToService(commandService, PackageGuids.guidCmdArgsToolBarCmdSet, PackageIds.ToolbarForceHiddenProjectsCommandId,
+                    toolWindowViewModel.ShowHiddenProjectsCommand, () => !treeViewModel.FilterHiddenProjects);
             }
         }
 

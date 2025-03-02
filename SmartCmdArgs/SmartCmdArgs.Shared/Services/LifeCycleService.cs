@@ -176,6 +176,7 @@ namespace SmartCmdArgs.Services
             Debug.Assert(IsEnabled);
 
             treeViewModel.ShowAllProjects = suoDataService.SuoDataJson.ShowAllProjects;
+            treeViewModel.FilterHiddenProjects = suoDataService.SuoDataJson.FilterHiddenProjects;
 
             viewModelUpdateService.UpdateCommandsForProjects(vsHelper.GetSupportedProjects(), actionAfterUpdate: fileStorage.AddProject);
             viewModelUpdateService.UpdateCurrentStartupProject();

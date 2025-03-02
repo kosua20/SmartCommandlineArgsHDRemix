@@ -116,6 +116,11 @@ namespace SmartCmdArgs.View
             nameof(SetLaunchProfileCommand), typeof(ICommand), typeof(TreeViewEx), new PropertyMetadata(default(ICommand)));
         public ICommand SetLaunchProfileCommand { get { return (ICommand)GetValue(SetLaunchProfileCommandProperty); } set { SetValue(SetLaunchProfileCommandProperty, value); } }
 
+        public static readonly DependencyProperty SetProjectHiddenCommandProperty = DependencyProperty.Register(
+           nameof(ToggleProjectHiddenCommand), typeof(ICommand), typeof(TreeViewEx),
+           new PropertyMetadata(default(ICommand), (d, e) => ((TreeViewEx)d)._projHiddenMenuItem.Command = (ICommand)e.NewValue));
+        public ICommand ToggleProjectHiddenCommand { get { return (ICommand)GetValue(SetProjectHiddenCommandProperty); } set { SetValue(SetProjectHiddenCommandProperty, value); } }
+
         public static readonly DependencyProperty SetExclusiveModeCommandProperty = DependencyProperty.Register(
             nameof(ToggleExclusiveModeCommand), typeof(ICommand), typeof(TreeViewEx),
             new PropertyMetadata(default(ICommand), (d, e) => ((TreeViewEx)d)._exclusiveModeMenuItem.Command = (ICommand)e.NewValue));
@@ -190,6 +195,7 @@ namespace SmartCmdArgs.View
         private MenuItem _openDirectoryMenuItem;
         private MenuItem _newGroupFromArgumentsMenuItem;
         private MenuItem _setAsStartupProjectMenuItem;
+        private MenuItem _projHiddenMenuItem;
         private MenuItem _projConfigMenuItem;
         private MenuItem _projPlatformMenuItem;
         private MenuItem _launchProfileMenuItem;
@@ -229,6 +235,7 @@ namespace SmartCmdArgs.View
             ContextMenu.Items.Add(_projConfigMenuItem = new MenuItem { Header = "Project Configuration" });
             ContextMenu.Items.Add(_projPlatformMenuItem = new MenuItem { Header = "Project Platform" });
             ContextMenu.Items.Add(_launchProfileMenuItem = new MenuItem { Header = "Launch Profile" });
+            ContextMenu.Items.Add(_projHiddenMenuItem = new MenuItem { Header = "Hide Project", IsCheckable = true });
             ContextMenu.Items.Add(new Separator());
             ContextMenu.Items.Add(_paramTypeMenuItem = new MenuItem { Header = "Item Type" });
             ContextMenu.Items.Add(new Separator());
@@ -269,6 +276,7 @@ namespace SmartCmdArgs.View
             CollapseWhenDisabled(_fileMenuItem);
             CollapseWhenDisabled(_openDirectoryMenuItem);
             CollapseWhenDisabled(_setAsStartupProjectMenuItem);
+            CollapseWhenDisabled(_projHiddenMenuItem);
             CollapseWhenDisabled(_projConfigMenuItem);
             CollapseWhenDisabled(_projPlatformMenuItem);
             CollapseWhenDisabled(_launchProfileMenuItem);
@@ -337,6 +345,7 @@ namespace SmartCmdArgs.View
             _projPlatformMenuItem.IsEnabled = false;
             _launchProfileMenuItem.IsEnabled = false;
             _paramTypeMenuItem.IsEnabled = false;
+            _projHiddenMenuItem.IsEnabled = false;
 
             _defaultCheckedMenuItem.IsChecked = SelectedTreeViewItems.Select(x => x.Item).OfType<CmdParameter>().Any(x => x.DefaultChecked);
 
@@ -360,6 +369,11 @@ namespace SmartCmdArgs.View
             {
                 _exclusiveModeMenuItem.IsEnabled = false;
                 _argsDelimiterMenuItem.IsEnabled = false;
+            }
+            if (fistItem is CmdProject project)
+            {
+                _projHiddenMenuItem.IsEnabled = true;
+                _projHiddenMenuItem.IsChecked = project.HiddenInList;
             }
 
             if (fistItem is CmdGroup group)

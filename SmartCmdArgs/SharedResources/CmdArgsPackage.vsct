@@ -52,6 +52,16 @@
         </Strings>
       </Menu>
 
+      <Menu guid="guidCmdArgsToolBarCmdSet" id="ToolbarShowProjectsMenuController" priority="0x0100" type="MenuController">
+        <Parent guid="guidCmdArgsToolBarCmdSet" id="TWToolbarEdit" />
+        <CommandFlag>TextChanges</CommandFlag>
+        <CommandFlag>TextIsAnchorCommand</CommandFlag>
+        <Strings>
+          <ButtonText>Show projects</ButtonText>
+          <CommandName>Show projects</CommandName>
+        </Strings>
+      </Menu>
+
       <Menu guid="guidCmdArgsToolBarCmdSet" id="ToolbarCopyCommandLineMenuController" priority="0x0100" type="MenuController">
         <Parent guid="guidCmdArgsToolBarCmdSet" id="TWToolbarEdit" />
         <CommandFlag>TextChanges</CommandFlag>
@@ -84,7 +94,9 @@
       <Group guid="guidCmdArgsToolBarCmdSet" id="TWToolbarSettings" priority="0x0000">
         <Parent guid="guidCmdArgsToolBarCmdSet" id="TWToolbar" />
       </Group>
-
+      <Group guid="guidCmdArgsToolBarCmdSet" id="TWToolbarGroupShowProjects" priority="0x000">
+        <Parent guid="guidCmdArgsToolBarCmdSet" id="ToolbarShowProjectsMenuController" />
+      </Group>
       <Group guid="guidCmdArgsToolBarCmdSet" id="TWToolbarGroupAdd" priority="0x000">
         <Parent guid="guidCmdArgsToolBarCmdSet" id="ToolbarAddMenuController" />
       </Group>
@@ -198,15 +210,23 @@
           <ButtonText>For Command Prompt</ButtonText>
         </Strings>
       </Button>
-      
+
       <Button guid="guidCmdArgsToolBarCmdSet" id="ToolbarShowAllProjectsCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidCmdArgsToolBarCmdSet" id="TWToolbarEdit" />
+        <Parent guid="guidCmdArgsToolBarCmdSet" id="TWToolbarGroupShowProjects" />
         <Icon guid="ImageCatalogGuid" id="CheckBoxList" />
         <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>FixMenuController</CommandFlag>
         <Strings>
-          <ButtonText>Show all projects</ButtonText>
+          <ButtonText>Show Projects</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidCmdArgsToolBarCmdSet" id="ToolbarForceHiddenProjectsCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCmdArgsToolBarCmdSet" id="TWToolbarGroupShowProjects" />
+        <Strings>
+          <ButtonText>Include Hidden Projects</ButtonText>
+        </Strings>
+      </Button>
+      
       <Button guid="guidCmdArgsToolBarCmdSet" id="ToolbarOpenSettingsCommandId" priority="0x0100" type="Button">
         <Parent guid="guidCmdArgsToolBarCmdSet" id="TWToolbarSettings" />
         <Icon guid="ImageCatalogGuid" id="Property" />
@@ -263,6 +283,7 @@
       <IDSymbol name="ToolbarCopyEnvVarsForCMDCommandId" value="0x110A"/>
       <IDSymbol name="ToolbarAddWorkDirId" value="0x110B"/>
       <IDSymbol name="ToolbarAddLaunchAppId" value="0x110C"/>
+      <IDSymbol name="ToolbarForceHiddenProjectsCommandId" value="0x110D"/>
       
       <IDSymbol name="TWToolbar" value="0x1000" />
       <IDSymbol name="TWToolbarGroupAddRemove" value="0x1050" />
@@ -272,10 +293,12 @@
       <IDSymbol name="TWToolbarGroupAdd" value="0x1054" />
       <IDSymbol name="TWToolbarGroupCopyCommandLine" value="0x1055" />
       <IDSymbol name="TWToolbarGroupCopyEnvVars" value="0x1056" />
+      <IDSymbol name="TWToolbarGroupShowProjects" value="0x1057" />
       
       <IDSymbol name="ToolbarAddMenuController" value="0x1201"/>
-      <IDSymbol name="ToolbarCopyCommandLineMenuController" value="0x1202"/>
-      <IDSymbol name="ToolbarCopyEnvVarsMenu" value="0x1203"/>
+      <IDSymbol name="ToolbarShowProjectsMenuController" value="0x1202"/>
+      <IDSymbol name="ToolbarCopyCommandLineMenuController" value="0x1203"/>
+      <IDSymbol name="ToolbarCopyEnvVarsMenu" value="0x1204"/>
     </GuidSymbol>
 
     <GuidSymbol name="guidCustomMonikers" value="{cafdbdaf-1847-4824-8957-a169d25d0cfb}">

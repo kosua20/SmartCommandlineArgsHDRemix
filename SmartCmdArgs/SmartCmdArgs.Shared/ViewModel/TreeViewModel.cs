@@ -50,6 +50,20 @@ namespace SmartCmdArgs.ViewModel
             }
         }
 
+        private bool filterHiddenProjects;
+        public bool FilterHiddenProjects
+        {
+            get => filterHiddenProjects;
+            set
+            {
+                if(filterHiddenProjects != value)
+                {
+                    SetAndNotify(value, ref filterHiddenProjects);
+                    UpdateTree();
+                }
+            }
+        }
+
         private string textBeforeEdit;
         private CmdBase currentEditingItem;
         private bool _isInEditMode;
@@ -91,7 +105,7 @@ namespace SmartCmdArgs.ViewModel
         }
 
         public IEnumerable<CmdProject> AllProjects => Projects.Values;
-
+        public IEnumerable<CmdProject> VisibleProjects => AllProjects.Where(p => !p.HiddenInList);
         public IEnumerable<CmdProject> StartupProjects => AllProjects.Where(p => p.IsStartupProject);
 
         public IEnumerable<CmdBase> AllItems => AllProjects.Concat(AllProjects.SelectMany(p => p));
@@ -179,7 +193,7 @@ namespace SmartCmdArgs.ViewModel
 
             if (ShowAllProjects)
             {
-                TreeItems = AllProjects
+                TreeItems = (FilterHiddenProjects ? VisibleProjects : AllProjects)
                     .GroupBy(p => p.IsStartupProject).OrderByDescending(g => g.Key)
                     .SelectMany(g => g.OrderBy(p => p.Value, StringComparer.CurrentCultureIgnoreCase))
                     .ToList();
@@ -412,6 +426,9 @@ namespace SmartCmdArgs.ViewModel
                     FireTreeContentChanged(e);
                     break;
                 case DefaultCheckedChangedEvent e:
+                    FireTreeContentChanged(e);
+                    break;
+                case IsHiddenChangedEvent e:
                     FireTreeContentChanged(e);
                     break;
                 case ParamTypeChangedEvent e:

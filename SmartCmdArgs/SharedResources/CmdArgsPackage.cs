@@ -49,6 +49,7 @@ namespace SmartCmdArgs
         public const int ToolbarCopyEnvVarsForCMDCommandId = 0x110A;
         public const int ToolbarAddWorkDirId = 0x110B;
         public const int ToolbarAddLaunchAppId = 0x110C;
+        public const int ToolbarForceHiddenProjectsCommandId = 0x110D;
         public const int TWToolbar = 0x1000;
         public const int TWToolbarGroupAddRemove = 0x1050;
         public const int TWToolbarGroupMove = 0x1051;
@@ -57,9 +58,11 @@ namespace SmartCmdArgs
         public const int TWToolbarGroupAdd = 0x1054;
         public const int TWToolbarGroupCopyCommandLine = 0x1055;
         public const int TWToolbarGroupCopyEnvVars = 0x1056;
+        public const int TWToolbarGroupShowProjects = 0x1057;
         public const int ToolbarAddMenuController = 0x1201;
-        public const int ToolbarCopyCommandLineMenuController = 0x1202;
-        public const int ToolbarCopyEnvVarsMenu = 0x1203;
+        public const int ToolbarShowProjectsMenuController = 0x1202;
+        public const int ToolbarCopyCommandLineMenuController = 0x1203;
+        public const int ToolbarCopyEnvVarsMenu = 0x1204;
         public const int CopyCmdLineIcon = 0x0001;
         public const int bmpVSMenuIcon = 0x0001;
     }
