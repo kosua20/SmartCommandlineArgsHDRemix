@@ -20,6 +20,8 @@ namespace SmartCmdArgs.DataSerialization
             var data = new ProjectDataJsonVersioned
             {
                 Id = prj.Id,
+                ProjectConfig = prj.ProjectConfig,
+                ProjectPlatform = prj.ProjectPlatform,
                 ExclusiveMode = prj.ExclusiveMode,
                 Delimiter = prj.Delimiter,
                 Postfix = prj.Postfix,

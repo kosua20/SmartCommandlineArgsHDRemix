@@ -329,6 +329,7 @@ namespace SmartCmdArgs.ViewModel
                 if (selectedItem is CmdProject proj)
                 {
                     vsHelper.SetAsStartupProject(proj.Id);
+                    vsHelper.SetConfigurationAndPlatform(proj.ProjectConfig, proj.ProjectPlatform);
                 }
             }, _ => ExtensionEnabled && HasSingleSelectedItemOfType<CmdProject>());
 
@@ -340,17 +341,35 @@ namespace SmartCmdArgs.ViewModel
                     toolWindowHistory.SaveState();
                     grp.ProjectConfig = configName;
                 }
-            }, _ => ExtensionEnabled && HasSingleSelectedItemOfType<CmdGroup>());
+                else if (selectedItem is CmdProject proj)
+                {
+                    toolWindowHistory.SaveState();
+                    proj.ProjectConfig = configName;
+                    if (proj.IsStartupProject)
+                    {
+                        vsHelper.SetConfigurationAndPlatform(proj.ProjectConfig, proj.ProjectPlatform);
+                    }
+                }
+            }, _ => ExtensionEnabled && (HasSingleSelectedItemOfType<CmdGroup>() || HasSingleSelectedItemOfType<CmdProject>()));
 
             SetProjectPlatformCommand = new RelayCommand<string>(platformName =>
             {
                 var selectedItem = treeViewModel.SelectedItems.FirstOrDefault();
-                if (selectedItem is CmdGroup grp)
+                if (selectedItem is CmdGroup grp )
                 {
                     toolWindowHistory.SaveState();
                     grp.ProjectPlatform = platformName;
+                } 
+                else if (selectedItem is CmdProject proj)
+                {
+                    toolWindowHistory.SaveState();
+                    proj.ProjectPlatform = platformName;
+                    if (proj.IsStartupProject)
+                    {
+                        vsHelper.SetConfigurationAndPlatform(proj.ProjectConfig, proj.ProjectPlatform);
+                    }
                 }
-            }, _ => ExtensionEnabled && HasSingleSelectedItemOfType<CmdGroup>());
+            }, _ => ExtensionEnabled && (HasSingleSelectedItemOfType<CmdGroup>() || HasSingleSelectedItemOfType<CmdProject>()));
 
             SetLaunchProfileCommand = new RelayCommand<string>(profileName =>
             {

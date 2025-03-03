@@ -1,4 +1,5 @@
 ﻿using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -71,6 +72,7 @@ namespace SmartCmdArgs.Services
         string GetMSBuildPropertyValue(IVsHierarchyWrapper hierarchy, string propName, string configName = null);
         bool CanEditFile(string fileName);
         Task OpenFileInVisualStudioAsync(string path);
+        void SetConfigurationAndPlatform(string configuration, string platform);
     }
 
     class VisualStudioHelperService : IVisualStudioHelperService, IAsyncInitializable, IVsUpdateSolutionEvents2, IVsSelectionEvents, IVsSolutionEvents, IVsSolutionEvents4
@@ -415,6 +417,26 @@ namespace SmartCmdArgs.Services
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
             appObject.ItemOperations.OpenFile(path);
+        }
+
+        public void SetConfigurationAndPlatform(string configuration, string platform)
+        {
+            if(configuration == null && platform == null)
+            {
+                return;
+            }
+
+            var activeSolutionConfig = appObject.Solution.SolutionBuild.ActiveConfiguration as SolutionConfiguration2;
+            var newConfiguration = configuration ?? activeSolutionConfig.Name;
+            var newPlatform = platform ?? activeSolutionConfig.PlatformName;
+
+            foreach (SolutionConfiguration2 solutionConfig in appObject.Solution.SolutionBuild.SolutionConfigurations)
+            {
+                if (solutionConfig.Name == newConfiguration && solutionConfig.PlatformName == newPlatform)
+                {
+                    solutionConfig.Activate();
+                }
+            }
         }
 
         private CancellationTokenSource startupProjectChangedCTS = null;

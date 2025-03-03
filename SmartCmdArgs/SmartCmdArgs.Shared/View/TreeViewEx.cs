@@ -374,6 +374,52 @@ namespace SmartCmdArgs.View
             {
                 _projHiddenMenuItem.IsEnabled = true;
                 _projHiddenMenuItem.IsChecked = project.HiddenInList;
+
+
+                if (SetProjectConfigCommand.CanExecute(null))
+                {
+                    var configurations = CmdArgsPackage.Instance.GetProjectConfigurations(project.Id);
+
+                    if (configurations.Count > 0 || project.ProjectConfig != null)
+                    {
+                        _projConfigMenuItem.IsEnabled = true;
+
+                        foreach (var config in configurations)
+                        {
+                            _projConfigMenuItem.Items.Add(new MenuItem
+                            {
+                                Header = config,
+                                Command = SetProjectConfigCommand,
+                                CommandParameter = config,
+                                IsChecked = project.ProjectConfig == config,
+                                IsCheckable = true
+                            });
+                        }
+                    }
+                }
+
+                if (SetProjectPlatformCommand.CanExecute(null))
+                {
+                    var platforms = CmdArgsPackage.Instance.GetProjectPlatforms(project.Id);
+
+                    if (platforms.Count > 0 || project.ProjectPlatform != null)
+                    {
+                        _projPlatformMenuItem.IsEnabled = true;
+
+                        foreach (var platform in platforms)
+                        {
+                            _projPlatformMenuItem.Items.Add(new MenuItem
+                            {
+                                Header = platform,
+                                Command = SetProjectPlatformCommand,
+                                CommandParameter = platform,
+                                IsChecked = project.ProjectPlatform == platform,
+                                IsCheckable = true
+                            });
+                        }
+                    }
+                }
+                // Does this make sense to support launch profiles?
             }
 
             if (fistItem is CmdGroup group)

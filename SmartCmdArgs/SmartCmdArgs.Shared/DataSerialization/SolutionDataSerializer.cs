@@ -34,6 +34,8 @@ namespace SmartCmdArgs.DataSerialization
                 var list = new ProjectDataJson
                 {
                     Id = kvPair.Value.Id,
+                    ProjectConfig = kvPair.Value.ProjectConfig,
+                    ProjectPlatform = kvPair.Value.ProjectPlatform,
                     ExclusiveMode = kvPair.Value.ExclusiveMode,
                     Delimiter = kvPair.Value.Delimiter,
                     HiddenInList = kvPair.Value.HiddenInList,

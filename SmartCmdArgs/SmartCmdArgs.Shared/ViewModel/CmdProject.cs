@@ -67,6 +67,32 @@ namespace SmartCmdArgs.ViewModel
         public override Guid ProjectGuid => Id;
 
         public Guid Kind { get; set; }
+        public new string ProjectPlatform
+        {
+            get => base.ProjectPlatform;
+            set
+            {
+                bool sameValue = (base.ProjectPlatform != null) && (base.ProjectPlatform.Equals(value));
+                base.ProjectPlatform = value;
+                if (!sameValue)
+                {
+                    ParentTreeViewModel?.UpdateTree();
+                }
+            }
+        }
+        public new string ProjectConfig
+        {
+            get => base.ProjectConfig;
+            set
+            {
+                bool sameValue = (base.ProjectConfig != null) && (base.ProjectConfig.Equals(value));
+                base.ProjectConfig = value;
+                if (!sameValue)
+                {
+                    ParentTreeViewModel?.UpdateTree();
+                }
+            }
+        }
 
         public CmdProject(Guid id, Guid kind, string displayName, IEnumerable<CmdBase> items, bool isExpanded, bool exclusiveMode, string delimiter, string prefix, string postfix, bool hiddenInList)
             : base(id, displayName, items, isExpanded, exclusiveMode, delimiter, prefix, postfix)
@@ -90,7 +116,9 @@ namespace SmartCmdArgs.ViewModel
 
         public bool NeedsSaving()
 		{
-            return (Items != null && Items.Count != 0) || HiddenInList || !String.IsNullOrEmpty( Prefix ) || !String.IsNullOrEmpty( Postfix ) || !String.IsNullOrEmpty( Delimiter ) || ExclusiveMode;
+            return (Items != null && Items.Count != 0) || HiddenInList || ExclusiveMode
+                || !String.IsNullOrEmpty( Prefix ) || !String.IsNullOrEmpty( Postfix ) || !String.IsNullOrEmpty( Delimiter )
+                || !String.IsNullOrEmpty( ProjectPlatform ) || !String.IsNullOrEmpty( ProjectConfig );
         }
     }
 }

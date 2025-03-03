@@ -109,6 +109,8 @@ namespace SmartCmdArgs.DataSerialization
                 var list = new ProjectDataJsonVersioned
                 {
                     Id = kvPair.Value.Id,
+                    ProjectConfig = kvPair.Value.ProjectConfig,
+                    ProjectPlatform = kvPair.Value.ProjectPlatform,
                     ExclusiveMode = kvPair.Value.ExclusiveMode,
                     Delimiter = kvPair.Value.Delimiter,
                     Postfix = kvPair.Value.Postfix,
