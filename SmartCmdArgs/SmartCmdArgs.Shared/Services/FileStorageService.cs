@@ -337,8 +337,8 @@ namespace SmartCmdArgs.Services
 
             using (solutionFsWatcher?.TemporarilyDisable())
             {
-                var allItemsExceptProjects = treeViewModel.AllItems.Where(i => !(i is CmdProject));
-                if (allItemsExceptProjects.Any() || !optionsSettings.DeleteEmptyFilesAutomatically)
+                var allItemsExceptEmptyProjects = treeViewModel.AllItems.Where(i => !(i is CmdProject) || ((i as CmdProject).NeedsSaving()));
+                if ( allItemsExceptEmptyProjects.Any() || !optionsSettings.DeleteEmptyFilesAutomatically)
                 {
                     if (!vsHelper.CanEditFile(jsonFilename))
                     {
@@ -393,7 +393,7 @@ namespace SmartCmdArgs.Services
             string filePath = FullFilenameForProjectJsonFileFromProject(project);
             FileSystemWatcher fsWatcher = projectFsWatchers.GetValueOrDefault(guid);
 
-            if (vm != null && (vm.Items.Any() || !optionsSettings.DeleteEmptyFilesAutomatically))
+            if (vm != null && (vm.NeedsSaving() || !optionsSettings.DeleteEmptyFilesAutomatically))
             {
                 using (fsWatcher?.TemporarilyDisable())
                 {

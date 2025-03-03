@@ -87,5 +87,10 @@ namespace SmartCmdArgs.ViewModel
 
             ParentTreeViewModel?.OnTreeEvent(treeEvent);
         }
+
+        public bool NeedsSaving()
+		{
+            return (Items != null && Items.Count != 0) || HiddenInList || !String.IsNullOrEmpty( Prefix ) || !String.IsNullOrEmpty( Postfix ) || !String.IsNullOrEmpty( Delimiter ) || ExclusiveMode;
+        }
     }
 }
