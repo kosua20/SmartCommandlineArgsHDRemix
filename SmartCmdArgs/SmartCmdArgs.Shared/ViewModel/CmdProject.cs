@@ -70,28 +70,12 @@ namespace SmartCmdArgs.ViewModel
         public new string ProjectPlatform
         {
             get => base.ProjectPlatform;
-            set
-            {
-                bool sameValue = (base.ProjectPlatform != null) && (base.ProjectPlatform.Equals(value));
-                base.ProjectPlatform = value;
-                if (!sameValue)
-                {
-                    ParentTreeViewModel?.UpdateTree();
-                }
-            }
+            set => base.ProjectPlatform = value;
         }
         public new string ProjectConfig
         {
             get => base.ProjectConfig;
-            set
-            {
-                bool sameValue = (base.ProjectConfig != null) && (base.ProjectConfig.Equals(value));
-                base.ProjectConfig = value;
-                if (!sameValue)
-                {
-                    ParentTreeViewModel?.UpdateTree();
-                }
-            }
+            set => base.ProjectConfig = value;
         }
 
         public CmdProject(Guid id, Guid kind, string displayName, IEnumerable<CmdBase> items, bool isExpanded, bool exclusiveMode, string projConf, string projPlatform, string delimiter, string prefix, string postfix, bool hiddenInList)
