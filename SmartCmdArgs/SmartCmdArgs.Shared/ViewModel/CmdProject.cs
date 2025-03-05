@@ -94,11 +94,13 @@ namespace SmartCmdArgs.ViewModel
             }
         }
 
-        public CmdProject(Guid id, Guid kind, string displayName, IEnumerable<CmdBase> items, bool isExpanded, bool exclusiveMode, string delimiter, string prefix, string postfix, bool hiddenInList)
+        public CmdProject(Guid id, Guid kind, string displayName, IEnumerable<CmdBase> items, bool isExpanded, bool exclusiveMode, string projConf, string projPlatform, string delimiter, string prefix, string postfix, bool hiddenInList)
             : base(id, displayName, items, isExpanded, exclusiveMode, delimiter, prefix, postfix)
         {
             Kind = kind;
             HiddenInList = hiddenInList;
+            ProjectConfig = projConf;
+            ProjectPlatform = projPlatform;
         }
 
         public override CmdBase Copy()

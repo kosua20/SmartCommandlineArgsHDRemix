@@ -656,6 +656,8 @@ namespace SmartCmdArgs.ViewModel
                 ListEntriesToCmdObjects(data.Items),
                 data.Expanded,
                 data.ExclusiveMode,
+                data.ProjectConfig,
+                data.ProjectPlatform,
                 data.Delimiter,
                 data.Prefix,
                 data.Postfix,
