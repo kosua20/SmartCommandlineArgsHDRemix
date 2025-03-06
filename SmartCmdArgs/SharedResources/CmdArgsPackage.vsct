@@ -123,7 +123,7 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
         <Icon guid="guidImages" id="bmpVSMenuIcon" />
         <Strings>
-          <ButtonText>Command Line Arguments</ButtonText>
+          <ButtonText>Command Line Arguments HD Remix</ButtonText>
         </Strings>
       </Button>
     
