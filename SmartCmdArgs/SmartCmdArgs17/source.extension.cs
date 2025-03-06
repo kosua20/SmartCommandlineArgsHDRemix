@@ -7,12 +7,12 @@ namespace SmartCmdArgs
 {
     internal sealed partial class Vsix
     {
-        public const string Id = "SmartCmdArgs17.6edd462d-d4d6-40b9-a7b4-451a6ce6c527";
-        public const string Name = "Smart Command Line Arguments VS2022";
+        public const string Id = "SmartCmdArgsHDRemix17.d4a3bf1a-f51e-4532-890b-2b0707510813";
+        public const string Name = "Smart Command Line Arguments HD Remix VS2022";
         public const string Description = @"A Visual Studio 2022 Extension which aims to provide a better UI to manage your command line arguments.";
         public const string Language = "en-US";
         public const string Version = "3.2.1";
-        public const string Author = "Irame & MBulli";
+        public const string Author = "Irame & MBulli, tweaks by Kosua20";
         public const string Tags = "Commandline Command Line Arguments cmd project";
     }
 }

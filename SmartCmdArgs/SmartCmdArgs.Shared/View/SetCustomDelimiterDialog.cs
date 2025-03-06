@@ -23,7 +23,7 @@ namespace SmartCmdArgs.View
             _control = new SetCustomDelimiterControl();
             _control.DataContext = vm;
 
-            Title = "Smart Commandline Arguments Delimiter Configuration";
+            Title = "Smart Commandline Arguments HD Remix Delimiter Configuration";
             Content = _control;
         }
     }

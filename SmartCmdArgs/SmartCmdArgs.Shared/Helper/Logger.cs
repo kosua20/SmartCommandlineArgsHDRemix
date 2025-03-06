@@ -6,7 +6,7 @@ namespace SmartCmdArgs.Helper
 {
     static class Logger
     {
-        private static string LogSource = "SmartCommandlineArgs";
+        private static string LogSource = "SmartCommandlineArgsHDRemix";
 
         public static void Info(string message)
         {

@@ -49,7 +49,7 @@ namespace SmartCmdArgs
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideToolWindow(typeof(ToolWindow), Window = PackageGuids.guidToolWindowString)]
-    [ProvideOptionPage(typeof(CmdArgsOptionPage), "Smart Command Line Arguments", "General", 1000, 1001, false)]
+    [ProvideOptionPage(typeof(CmdArgsOptionPage), "Smart Command Line Arguments HD Remix", "General", 1000, 1001, false)]
     [ProvideBindingPath]
     [ProvideKeyBindingTable(PackageGuids.guidToolWindowString, 200)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExistsAndFullyLoaded_string, PackageAutoLoadFlags.BackgroundLoad)]
@@ -60,9 +60,9 @@ namespace SmartCmdArgs
         /// <summary>
         /// CmdArgsPackage GUID string.
         /// </summary>
-        public const string DataObjectCmdJsonFormat = "SmartCommandlineArgs_D11D715E-CBF3-43F2-A1C1-168FD5C48505";
-        public const string DataObjectCmdListFormat = "SmartCommandlineArgs_35AD7E71-E0BC-4440-97D9-2E6DA3085BE4";
-        public const string SolutionOptionKey = "SmartCommandlineArgsVA"; // Only letters are allowed
+        public const string DataObjectCmdJsonFormat = "SmartCommandlineArgsHDRemix_d79daac7-36bb-4bb0-858e-59d2d2724986";
+        public const string DataObjectCmdListFormat = "SmartCommandlineArgsHDRemix_173e508f-b41b-42d8-ade6-7e756ea4657f";
+		public const string SolutionOptionKey = "SmartCommandlineArgsHDRemixVA"; // Only letters are allowed
 
         private IVisualStudioHelperService vsHelper;
         private IOptionsSettingsService optionsSettings;
@@ -251,7 +251,6 @@ namespace SmartCmdArgs
         public List<string> GetProjectPlatforms(Guid projGuid)
         {
             var project = vsHelper.HierarchyForProjectGuid(projGuid);
-
             var platforms = (project.GetProject()?.ConfigurationManager?.PlatformNames as Array)?.Cast<string>().ToList();
             return platforms ?? new List<string>();
         }

@@ -259,17 +259,17 @@
 
   <Symbols>
     <!-- This is the package guid. -->
-    <GuidSymbol name="guidCmdArgsToolWindowPackage" value="{131b0c0a-5dd0-4680-b261-86ab5387b86e}" />
+    <GuidSymbol name="guidCmdArgsToolWindowPackage" value="{33e4dd87-1854-43f2-965b-3f91a1e9fed6}" />
 
-    <GuidSymbol name="guidToolWindow" value="{a21b35ed-5c13-4d55-a3d2-71054c4e9540}" />
+    <GuidSymbol name="guidToolWindow" value="{45ae1d61-531c-4cf5-82f5-009170691376}" />
     
     <!-- This is the guid used to group exteranl Visual Studio commands together -->
-    <GuidSymbol name="guidVSMenuCmdSet" value="{C5334667-5DDA-4F4A-BC24-6E0084DC5068}">
+    <GuidSymbol name="guidVSMenuCmdSet" value="{949f3b77-77be-47fb-995e-ba20334e4828}">
       <IDSymbol name="ToolWindowCommandId" value="0x0100" />
     </GuidSymbol>
     
     <!-- This is the guid used to group toolbar commands together -->
-    <GuidSymbol name="guidCmdArgsToolBarCmdSet" value="{53D59879-7413-491E-988C-938117B773E3}">
+    <GuidSymbol name="guidCmdArgsToolBarCmdSet" value="{1d3aeb33-7f70-438a-92b0-31b18f7284d7}">
       <IDSymbol name="ToolbarAddCommandId" value="0x1100"/>
       <IDSymbol name="ToolbarRemoveCommandId" value="0x1101"/>
       <IDSymbol name="ToolbarMoveUpCommandId" value="0x1102"/>
@@ -301,11 +301,11 @@
       <IDSymbol name="ToolbarCopyEnvVarsMenu" value="0x1204"/>
     </GuidSymbol>
 
-    <GuidSymbol name="guidCustomMonikers" value="{cafdbdaf-1847-4824-8957-a169d25d0cfb}">
+    <GuidSymbol name="guidCustomMonikers" value="{456afed8-eeb0-4e2d-bb64-c74a4603a623}">
       <IDSymbol name="CopyCmdLineIcon" value="1"/>
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{B7F63ABD-939F-4912-912E-E98C7CC9EF6F}" >
+    <GuidSymbol name="guidImages" value="{5a350d10-f7c2-409d-9ae6-9bfae3820599}" >
       <IDSymbol name="bmpVSMenuIcon" value="1" />
     </GuidSymbol>
   </Symbols>

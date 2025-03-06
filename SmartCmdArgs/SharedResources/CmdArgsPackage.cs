@@ -12,22 +12,22 @@ namespace SmartCmdArgs
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidCmdArgsToolWindowPackageString = "131b0c0a-5dd0-4680-b261-86ab5387b86e";
+        public const string guidCmdArgsToolWindowPackageString = "33e4dd87-1854-43f2-965b-3f91a1e9fed6";
         public static Guid guidCmdArgsToolWindowPackage = new Guid(guidCmdArgsToolWindowPackageString);
 
-        public const string guidToolWindowString = "a21b35ed-5c13-4d55-a3d2-71054c4e9540";
+        public const string guidToolWindowString = "45ae1d61-531c-4cf5-82f5-009170691376";
         public static Guid guidToolWindow = new Guid(guidToolWindowString);
 
-        public const string guidVSMenuCmdSetString = "c5334667-5dda-4f4a-bc24-6e0084dc5068";
+        public const string guidVSMenuCmdSetString = "949f3b77-77be-47fb-995e-ba20334e4828";
         public static Guid guidVSMenuCmdSet = new Guid(guidVSMenuCmdSetString);
 
-        public const string guidCmdArgsToolBarCmdSetString = "53d59879-7413-491e-988c-938117b773e3";
+        public const string guidCmdArgsToolBarCmdSetString = "1d3aeb33-7f70-438a-92b0-31b18f7284d7";
         public static Guid guidCmdArgsToolBarCmdSet = new Guid(guidCmdArgsToolBarCmdSetString);
 
-        public const string guidCustomMonikersString = "cafdbdaf-1847-4824-8957-a169d25d0cfb";
+        public const string guidCustomMonikersString = "456afed8-eeb0-4e2d-bb64-c74a4603a623";
         public static Guid guidCustomMonikers = new Guid(guidCustomMonikersString);
 
-        public const string guidImagesString = "b7f63abd-939f-4912-912e-e98c7cc9ef6f";
+        public const string guidImagesString = "5a350d10-f7c2-409d-9ae6-9bfae3820599";
         public static Guid guidImages = new Guid(guidImagesString);
     }
     /// <summary>

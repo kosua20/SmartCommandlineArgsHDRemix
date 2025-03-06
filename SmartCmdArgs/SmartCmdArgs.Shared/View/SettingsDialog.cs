@@ -18,7 +18,7 @@ namespace SmartCmdArgs.View
             _settingsControl = new SettingsControl();
             _settingsControl.DataContext = settingsViewModel;
 
-            Title = "Smart Commandline Arguments Settings";
+            Title = "Smart Commandline Arguments HD Remix Settings";
             Content = _settingsControl;
         }
     }

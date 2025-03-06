@@ -13,8 +13,8 @@
     <ProjectGuid>{745982F0-9E21-4F74-B349-788957F07D38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartCmdArgs15</RootNamespace>
-    <AssemblyName>SmartCmdArgs15</AssemblyName>
+    <RootNamespace>SmartCmdArgsHDRemix15</RootNamespace>
+    <AssemblyName>SmartCmdArgsHDRemix15</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -77,8 +77,8 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>
-      <LastGenOutput>source.extension.cs</LastGenOutput>
       <CustomToolNamespace>SmartCmdArgs</CustomToolNamespace>
+      <LastGenOutput>source.extension.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

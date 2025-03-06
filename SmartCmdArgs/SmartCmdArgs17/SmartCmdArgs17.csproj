@@ -13,8 +13,8 @@
     <ProjectGuid>{FC5FA6D9-AD78-4915-B47C-AF9EEAE5DD86}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartCmdArgs17</RootNamespace>
-    <AssemblyName>SmartCmdArgs17</AssemblyName>
+    <RootNamespace>SmartCmdArgsHDRemix17</RootNamespace>
+    <AssemblyName>SmartCmdArgsHDRemix17</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>

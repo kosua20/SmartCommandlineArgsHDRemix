@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="SmartCmdArgs.Markus B.9fb78f2a-71cb-4437-b32f-d875e376bacf"  Version="3.2.1" Language="en-US" Publisher="Irame &amp; MBulli" />
-        <DisplayName>Smart Command Line Arguments VS2019</DisplayName>
+        <Identity Id="SmartCmdArgsHDRemix.45b5f11d-e459-497d-9385-034b49b1b2f6"  Version="3.2.1" Language="en-US" Publisher="Irame &amp; MBulli, tweaks by Kosua20" />
+        <DisplayName>Smart Command Line Arguments HD Remix VS2019</DisplayName>
         <Description xml:space="preserve">A Visual Studio 2019 Extension which aims to provide a better UI to manage your command line arguments.</Description>
-        <MoreInfo>https://github.com/MBulli/SmartCommandlineArgs</MoreInfo>
+        <MoreInfo>https://github.com/kosua20/SmartCommandlineArgsHDRemix</MoreInfo>
         <GettingStartedGuide>Open the window via: View → Other Windows → Commandline Arguments</GettingStartedGuide>
         <Icon>Resources\BigIcon.png</Icon>
         <PreviewImage>Resources\vsix_preview_image.png</PreviewImage>

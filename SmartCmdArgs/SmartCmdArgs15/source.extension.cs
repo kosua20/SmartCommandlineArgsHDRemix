@@ -7,12 +7,12 @@ namespace SmartCmdArgs
 {
     internal sealed partial class Vsix
     {
-        public const string Id = "SmartCmdArgs15.0248c5c8-b4c5-4201-9360-5c100580f52e";
-        public const string Name = "Smart Command Line Arguments VS2017";
+        public const string Id = "SmartCmdArgsHDRemix15.f8e3fd0d-1d0f-43c6-a53e-b6bf65fbe854";
+        public const string Name = "Smart Command Line Arguments HD Remix VS2017";
         public const string Description = @"A Visual Studio 2017 Extension which aims to provide a better UI to manage your command line arguments.";
         public const string Language = "en-US";
         public const string Version = "3.2.1";
-        public const string Author = "Irame & MBulli";
+        public const string Author = "Irame & MBulli, tweaks by Kosua20";
         public const string Tags = "Commandline Command Line Arguments cmd project";
     }
 }

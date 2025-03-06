@@ -2,7 +2,7 @@
 <ImageManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
   <Symbols>
     <String Name="Resources" Value="/SmartCmdArgs15;Component/Monikers" />
-    <Guid Name="AssetsGuid" Value="{cafdbdaf-1847-4824-8957-a169d25d0cfb}" />
+    <Guid Name="AssetsGuid" Value="{25e29480-bf22-41dc-8276-bd488424d8fa}" />
     <ID Name="FoProjectNode" Value="0" />
     <ID Name="CopyCmdLine" Value="1" />
   </Symbols>
