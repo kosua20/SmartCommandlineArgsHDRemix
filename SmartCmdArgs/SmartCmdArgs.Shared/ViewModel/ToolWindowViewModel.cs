@@ -383,13 +383,11 @@ namespace SmartCmdArgs.ViewModel
 
             ToggleProjectHiddenCommand = new RelayCommand(() => {
                 toolWindowHistory.SaveState();
-                foreach (var selectedItem in treeViewModel.SelectedItems)
-                {
-                    if (selectedItem is CmdProject proj)
-                    {
-                        proj.HiddenInList = !proj.HiddenInList;
-                    }
-                }
+                var selectedItem = treeViewModel.SelectedItems.FirstOrDefault();
+				if( selectedItem is CmdProject proj )
+				{
+					proj.HiddenInList = !proj.HiddenInList;
+				}
             }, _ => ExtensionEnabled && HasSelectedItemOfType<CmdProject>());
 
             ToggleExclusiveModeCommand = new RelayCommand(() =>
