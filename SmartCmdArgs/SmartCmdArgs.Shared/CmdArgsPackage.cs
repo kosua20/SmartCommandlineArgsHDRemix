@@ -251,7 +251,8 @@ namespace SmartCmdArgs
         public List<string> GetProjectPlatforms(Guid projGuid)
         {
             var project = vsHelper.HierarchyForProjectGuid(projGuid);
-            var platforms = (project.GetProject()?.ConfigurationManager?.PlatformNames as Array)?.Cast<string>().ToList();
+            // need a special case f
+            var platforms = (project.GetProject()?.ConfigurationManager?.PlatformNames as Array)?.Cast<string>()?.Select(p => p.Equals("Win32", StringComparison.CurrentCultureIgnoreCase ) ? "x86" : p).ToList();
             return platforms ?? new List<string>();
         }
 
