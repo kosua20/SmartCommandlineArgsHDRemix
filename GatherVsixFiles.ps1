@@ -2,9 +2,9 @@ $tag = git describe --tags
 
 if ($LastExitCode -eq 0 -and -not [string]::IsNullOrWhiteSpace($tag)) {
     $filesMap = @{
-        "SmartCmdArgs\SmartCmdArgs15\bin\Release\SmartCmdArgs15.vsix" = "SmartCmdArgs-vs2017-{0}.vsix";
-        "SmartCmdArgs\SmartCmdArgs16\bin\Release\SmartCmdArgs16.vsix" = "SmartCmdArgs-vs2019-{0}.vsix";
-        "SmartCmdArgs\SmartCmdArgs17\bin\Release\SmartCmdArgs17.vsix" = "SmartCmdArgs-vs2022-{0}.vsix";
+        "SmartCmdArgs\SmartCmdArgs15\bin\Release\SmartCmdArgsHDRemix15.vsix" = "SmartCmdArgsHDRemix-vs2017-{0}.vsix";
+        "SmartCmdArgs\SmartCmdArgs16\bin\Release\SmartCmdArgsHDRemix16.vsix" = "SmartCmdArgsHDRemix-vs2019-{0}.vsix";
+        "SmartCmdArgs\SmartCmdArgs17\bin\Release\SmartCmdArgsHDRemix17.vsix" = "SmartCmdArgsHDRemix-vs2022-{0}.vsix";
     }
 
     foreach ($file in $filesMap.Keys) {
