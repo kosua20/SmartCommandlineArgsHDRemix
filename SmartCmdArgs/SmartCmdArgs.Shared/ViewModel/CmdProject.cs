@@ -47,10 +47,9 @@ namespace SmartCmdArgs.ViewModel
             set
             {
                 bool oldValue = isHiddenInList;
-                SetAndNotify(value, ref isHiddenInList);
+                SetAndNotify(value, ref isHiddenInList, nameof(isHiddenInList));
                 if (oldValue != value)
                 {
-                    ParentTreeViewModel?.UpdateTree();
                     BubbleEvent(new IsHiddenChangedEvent(this, oldValue, value), null);
                 }
             }
